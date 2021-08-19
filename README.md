@@ -17,4 +17,4 @@
 
 ![Volt Development GitHub Stats][(https://github-readme-stats.vercel.app/api?VoltDevelopment=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
 
-<img alt="Volt Development most used languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Volt Development&theme=radical&langs_count=8&layout=compact"/>
+<img alt="Volt Development most used languages" src="https://github-readme-stats.vercel.app/api/top-langs/?Volt Development&theme=radical&langs_count=8&layout=compact"/>
