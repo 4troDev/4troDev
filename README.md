@@ -1,7 +1,7 @@
 # Volt Development Here!
 ## Hello! Volt! <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">
 
-<br> Someone said I am a bitch <br/>
+<br> Shut up i'm trying to learn goddamn. <br/>
 
 
 <p align="left">
