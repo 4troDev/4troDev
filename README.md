@@ -15,6 +15,3 @@
 ![](https://komarev.com/ghpvc/?username=VoltDevelopment&color=blue)
 ---
 
-![Volt Development GitHub Stats][(https://github-readme-stats.vercel.app/api?VoltDevelopment=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
-
-<img alt="Volt Development most used languages" src="https://github-readme-stats.vercel.app/api/top-langs/?Volt Development&theme=radical&langs_count=8&layout=compact"/>
