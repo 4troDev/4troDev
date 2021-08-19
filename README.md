@@ -1,7 +1,7 @@
 # Volt Development Here!
 ## Hello! Volt! <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">
 
-<br> Someone said I am a verified bot developer on discord <br/>
+<br> Someone said I am a bitch <br/>
 
 
 <p align="left">
@@ -15,5 +15,6 @@
 ![](https://komarev.com/ghpvc/?username=VoltDevelopment&color=blue)
 ---
 
-![Volt Development GitHub Stats]([![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?VoltDevelopment=anuraghazra)](https://github.com/VoltDevelopment)
+![Volt Development GitHub Stats][(https://github-readme-stats.vercel.app/api?VoltDevelopment=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
+
 <img alt="Volt Development most used languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Volt Development&theme=radical&langs_count=8&layout=compact"/>
