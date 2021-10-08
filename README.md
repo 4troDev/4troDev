@@ -7,9 +7,10 @@
 <p align="left">
 <h3 align="left">Connect with me:</h3>
 <br>
-<a href="https://discord.com/users/842051084654739476://dsc.bio/gruswar" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.4.0/icons/discord.svg" alt="Gruswar#0001 | Discord" height="40" width="40" /></a>    <b> Discord </b>
+<a href="https://discord.com/users/842051084654739476://dsc.bio/gruswar" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.4.0/icons/discord.svg" alt="Gruswar#0001 | Discord" height="40" width="40" /></a>   
+<b> Discord </b>
 </p>
-
+Freecodecamp.org Profile https://www.freecodecamp.org/voltdevelopment
 
 ---
 ![](https://komarev.com/ghpvc/?username=VoltDevelopment&color=blue)
