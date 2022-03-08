@@ -19,3 +19,4 @@
     />
   </a>
   
+  <a href="https://app.daily.dev/JosueDev"><img src="https://api.daily.dev/devcards/01e9e3c982b74fb1ae1cff1b4bf8f59c.png?r=frq" width="400" alt="Josue's Dev Card"/></a>
