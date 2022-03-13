@@ -1,9 +1,9 @@
 <h1 align="center">Hi 👋, I'm Josue</h1>
 <h3 align="center">A passionate Tech Student who wants to learn how to code and develop something that can help people .</h3>
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=voltdevelopment&label=Profile%20views&color=0e75b6&style=flat" alt="voltdevelopment" /> </p>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=josueedev&label=Profile%20views&color=0e75b6&style=flat" alt="josueedev" /> </p>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=voltdevelopment" alt="voltdevelopment" /></a> </p>
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=josueedev" alt="josueedev" /></a> </p>
 
 <p align="left"> <a href="https://twitter.com/josueedev" target="blank"><img src="https://img.shields.io/twitter/follow/josueedev?logo=twitter&style=for-the-badge" alt="josueedev" /></a> </p>
 
