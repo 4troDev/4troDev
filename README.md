@@ -8,11 +8,11 @@
 <p align="left"> <a href="https://twitter.com/josueedev" target="blank"><img src="https://img.shields.io/twitter/follow/josueedev?logo=twitter&style=for-the-badge" alt="josueedev" /></a> </p>
 
 - Owner of [Coffee Dev](https://github.com/CoffeeDevNet)
-- Owner of [Volt Development](https://github.com/VoltDevelopment)
+- Project Manager for [ArcadeJS](https://github.com/Arcadejs-org)
 
 - 🌱 I’m currently learning **JavaScript, HTML And CSS**
 
-- 👨‍💻 All of my projects are available at [https://github.com/VoltDevelopment](https://github.com/VoltDevelopment)
+- 👨‍💻 All of my projects are available at [https://JosueeDev.github.io/portfolio](https://JosueeDev.github.io/portfolio)
 
 - 📖 Im Reading Head First JavaScript Programming
 
