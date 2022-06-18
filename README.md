@@ -7,8 +7,8 @@
 
 <p align="left"> <a href="https://twitter.com/josueedev" target="blank"><img src="https://img.shields.io/twitter/follow/josueedev?logo=twitter&style=for-the-badge" alt="josueedev" /></a> </p>
 
-- Owner of [Coffee Dev](https://github.com/CoffeeDevNet)
-- Project Manager for [ArcadeJS](https://github.com/Arcadejs-org)
+- Project Manager For [Coffee Dev](https://github.com/CoffeeDevNet)
+- Creator of [GitGuardApp](https://github.com/GitGuardApp) 
 
 - 🌱 I’m currently learning **JavaScript, HTML And CSS**
 
