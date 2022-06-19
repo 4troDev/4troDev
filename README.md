@@ -14,11 +14,11 @@
 
 - 👨‍💻 All of my projects are available at [https://JosueeDev.github.io/portfolio](https://JosueeDev.github.io/portfolio)
 
-- 📖 Im Reading Head First JavaScript Programming
+- 📖 Im Reading Head First JavaScript Programming.
 
-- 💬 Ask me about **what i'm planning to do after im done learning**
+- 💬 Ask me about **what i'm planning to do after im done learning**.
 
-- 📫 How to reach me **Josue.Dev@yahoo.com**
+- 📫 How to reach me **Josue.Dev@yahoo.com**.
 
 - ⚡ Fun fact I'm always trying to learn something New.
 
