@@ -3,9 +3,9 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=rustyydev&label=Profile%20views&color=0e75b6&style=flat" alt="rustyydev" /> </p>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=rustyydev" alt="rustyydev" /></a> </p>
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=RustyyDev" alt="RustyyDev" /></a> </p>
 
-<p align="left"> <a href="https://twitter.com/rustyydev" target="blank"><img src="https://img.shields.io/twitter/follow/rustyydev?logo=twitter&style=for-the-badge" alt="rustyydev" /></a> </p>
+<p align="left"> <a href="https://twitter.com/RustyyDev" target="blank"><img src="https://img.shields.io/twitter/follow/rustyydev?logo=twitter&style=for-the-badge" alt="RustyyDev" /></a> </p>
 
 - Owner of [Coffee Dev](https://github.com/CoffeeDevNet)
 - Owner of [GitGuard](https://github.com/GitGuardApp)
