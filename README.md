@@ -1,18 +1,18 @@
 <h1 align="center">Hi 👋, I'm Josue</h1>
 <h3 align="center">A passionate Tech Student who wants to learn how to code and develop something that can help people .</h3>
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=josueedev&label=Profile%20views&color=0e75b6&style=flat" alt="josueedev" /> </p>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=RustyyDev&label=Profile%20views&color=0e75b6&style=flat" alt="RustyyDev" /> </p>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=josueedev" alt="josueedev" /></a> </p>
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=RustyyDev" alt="RustyyDev" /></a> </p>
 
-<p align="left"> <a href="https://twitter.com/josueedev" target="blank"><img src="https://img.shields.io/twitter/follow/josueedev?logo=twitter&style=for-the-badge" alt="josueedev" /></a> </p>
+<p align="left"> <a href="https://twitter.com/RustyyDev" target="blank"><img src="https://img.shields.io/twitter/follow/RustyyDev?logo=twitter&style=for-the-badge" alt="RustyyDev" /></a> </p>
 
 - Project Manager For [Coffee Dev](https://github.com/CoffeeDevNet)
 - Creator of [GitGuardApp](https://github.com/GitGuardApp) 
 
 - 🌱 I’m currently learning **JavaScript, HTML And CSS**
 
-- 👨‍💻 All of my projects are available at [https://JosueeDev.github.io/portfolio](https://JosueeDev.github.io/portfolio)
+- 👨‍💻 All of my projects are available at [https://RustyyDev.github.io/portfolio](https://RustyyDev.github.io/portfolio)
 
 - 📖 Im Reading Head First JavaScript Programming.
 
@@ -24,8 +24,8 @@
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
-<a href="https://twitter.com/josueedev" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="josueedev" height="30" width="40" /></a>
-<a href="https://instagram.com/josueedev" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="josueedev" height="30" width="40" /></a>
+<a href="https://twitter.com/RustyyDev" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="RustyyDev" height="30" width="40" /></a>
+<a href="https://instagram.com/RustyyDev" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="RustyyDev" height="30" width="40" /></a>
 <a href="https://discord.gg/https://discord.gg/acqq6SN9zq" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="https://discord.gg/acqq6SN9zq" height="30" width="40" /></a>
 </p>
 
@@ -35,8 +35,8 @@
 <h3 align="left">Support:</h3>
 <p><a href="https://www.buymeacoffee.com/josuedev"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="josuedev" /></a></p><br><br><br><br>
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=josueedev&show_icons=true&locale=en&layout=compact" alt="josueedev" /></p>
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=RustyyDev&show_icons=true&locale=en&layout=compact" alt="RustyyDev" /></p>
 
-<p>&nbsp;<img align="left" src="https://github-readme-stats.vercel.app/api?username=josueedev&show_icons=true&locale=en" alt="josueedev" /></p>
+<p>&nbsp;<img align="left" src="https://github-readme-stats.vercel.app/api?username=RustyyDev&show_icons=true&locale=en" alt="RustyyDev" /></p>
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=josueedev&" alt="josueedev" /></p>
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=RustyyDev&" alt="RustyyDev" /></p>
