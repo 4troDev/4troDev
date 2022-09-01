@@ -1,0 +1,27 @@
+name: 💥 Crash Report
+description: Help improve this projact by reporting a Crash
+title: "[Crash]: "
+labels: ["crash"]
+assignees: [""]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this crash report 🤗
+        Make sure there aren't any open/closed issues for this topic 😃
+        
+  - type: textarea
+    id: crash-log
+    attributes:
+      label: Crash Log
+      description: Paste the complete crash log between the quotes below. Please include a few lines from the log preceding the crash report to provide some context.
+    validations:
+      required: true
+
+  - type: textarea
+    id: Extra-info
+    attributes:
+      label: Aditional information
+      description: Provide any addicional informatiom that can be use to reproduce crash such as OS distribution and version or Steps to reproduce (if any).
+    validations:
+      required: false

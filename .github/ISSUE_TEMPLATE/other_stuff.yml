@@ -1,0 +1,15 @@
+name:  Other
+description: Can't find the right issue type? Use this one!
+title: "[Other]: "
+labels: ["other"]
+assignees: [""]
+body:
+
+        
+  - type: textarea
+    id: Other
+    attributes:
+      label: Other
+      description: FCan't find the right issue type? Use this one!
+    validations:
+      required: true
