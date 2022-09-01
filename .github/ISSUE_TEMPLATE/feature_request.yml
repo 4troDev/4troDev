@@ -1,3 +1,17 @@
+name:  Feature Request
+description: Request a new feature!
+title: "[Feature Request]: "
+labels: ["feature-request"]
+assignees: [""]
+body:
 
+        
+  - type: textarea
+    id: Feature-Request
+    attributes:
+      label: Feature
+      description: Request new feature!
+    validations:
+      required: true
 
   

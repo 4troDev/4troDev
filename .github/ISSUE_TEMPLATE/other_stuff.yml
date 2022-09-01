@@ -10,6 +10,6 @@ body:
     id: Other
     attributes:
       label: Other
-      description: FCan't find the right issue type? Use this one!
+      description: Can't find the right issue type? Use this one!
     validations:
       required: true
