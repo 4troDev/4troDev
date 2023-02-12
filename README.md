@@ -12,7 +12,7 @@
 <!-- Twitter --> 
 
 <!-- What im Planning to work on: START -->
-<h3 aligh="canter"> After im done learning the basic of coding ill be working on learning more advance coding so i can work on projects like 👇
+<h3 aligh="canter"> After im done learning the basic of coding ill be working on learning more advance coding so i can work on projects like 👇 </h3>
 
 - [Coffee Dev](https://github.com/CoffeeDevNet) - A place for people to learn now to code.
 
@@ -23,7 +23,6 @@
 - [RepoMonitor](https://github.com/RepoMonitor) - Powerful and useful tool for developers who want to stay on top of their GitHub repositories and keep their code organized, Secure and up-to-date.
 
 <!-- What im Planning to work on: END -->
-
 
 - 🌱 I’m currently learning **JavaScript, HTML And CSS** but in the future im planning to keep leaning more languages so i can work in more incredible projects.
 
