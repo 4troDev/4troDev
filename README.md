@@ -4,7 +4,7 @@
 <!-- Github Icons : START-->
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=4troDev&label=Profile%20views&color=0e75b6&style=flat" alt="4troDev" /> </p>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=Mustard92" alt="Mustard92" /></a> </p>
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=4troDev" alt="4troDev" /></a> </p>
 <!-- Github Icons : END-->
 
 <!-- Twitter -->
