@@ -2,13 +2,13 @@
 <h3 align="center">A passionate Tech Student who wants to learn how to code and develop something that can help people .</h3>
 
 <!-- Github Icons : START-->
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=Mustard92&label=Profile%20views&color=0e75b6&style=flat" alt="Mustard92" /> </p>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=4troDev&label=Profile%20views&color=0e75b6&style=flat" alt="4troDev" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=Mustard92" alt="Mustard92" /></a> </p>
 <!-- Github Icons : END-->
 
 <!-- Twitter -->
-<p align="left"> <a href="https://twitter.com/Mustard921" target="blank"><img src="https://img.shields.io/twitter/follow/Mustard921?logo=twitter&style=for-the-badge" alt="Mustard921" /></a> </p>
+<p align="left"> <a href="https://twitter.com/Mustard921" target="blank"><img src="https://img.shields.io/twitter/follow/4troDev?logo=twitter&style=for-the-badge" alt="4troDev" /></a> </p>
 <!-- Twitter --> 
 
 <!-- What im Planning to work on: START -->
@@ -28,7 +28,7 @@
 
 <!-- Projects Location: Start -->
 
-- 👨‍💻 All of my projects are available in [My Github Page](https://github.com/Mustard92) As well as my [Portfolio: **Coming Soon**](https://Mustard92.com) 
+- 👨‍💻 All of my projects are available in [My Github Page](https://github.com/4troDev) As well as my [Portfolio: **Coming Soon**](https://4troDev.com) 
 <!-- Projects Location: end -->
 
 - 💬 **Ask me about:** How my Leaning to code Journey is going ill be happy to tell you and provide you with tips on how to learn yourself.
@@ -42,11 +42,11 @@
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
-<a href="https://dev.to/Mustard92" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/devto.svg" alt="rustyydev" height="30" width="40" /></a>
+<a href="https://dev.to/4troDev" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/devto.svg" alt="rustyydev" height="30" width="40" /></a>
 <a href="https://twitter.com/Mustard921" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="rustyydev" height="30" width="40" /></a>
 <a href="https://linkedin.com/in/Mustard92" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="Mustard92" height="30" width="40" /></a>
 <a href="https://instagram.com/Mustard92" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="Mustard92" height="30" width="40" /></a>
-<a href="https://medium.com/Mustard92" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/medium.svg" alt="Mustard92" height="30" width="40" /></a>
+<a href="https://medium.com/4troDev" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/medium.svg" alt="Mustard92" height="30" width="40" /></a>
 <a href="https://discord.gg/https://discord.gg/acqq6SN9zq" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="https://discord.gg/acqq6SN9zq" height="30" width="40" /></a>
 </p>
 
@@ -59,7 +59,7 @@ rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/m
 
 
 <h3 align="left">Support:</h3>
-<p><a href="https://www.buymeacoffee.com/Mustard92"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="RustyyDev" /></a></p><br><br>
+<p><a href="https://www.buymeacoffee.com/4troDev"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="4troDev" /></a></p><br><br>
 
 
 
