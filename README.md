@@ -8,13 +8,13 @@
 <!-- Github Icons : END-->
 
 <!-- Twitter -->
-<p align="left"> <a href="https://twitter.com/Mustard921" target="blank"><img src="https://img.shields.io/twitter/follow/4troDev?logo=twitter&style=for-the-badge" alt="4troDev" /></a> </p>
+<p align="left"> <a href="https://twitter.com/4tro_Dev" target="blank"><img src="https://img.shields.io/twitter/follow/4tro_Dev?logo=twitter&style=for-the-badge" alt="4tro_Dev" /></a> </p>
 <!-- Twitter --> 
 
 <!-- What im Planning to work on: START -->
 <h3 aligh="canter"> After im done learning the basic of coding ill be working on learning more advance coding so i can work on projects like 👇 </h3>
 
-- [Coffee Dev](https://github.com/CoffeeDevNet) - A place for people to learn now to code.
+- [Coffee Dev](https://github.com/CoffeeDevNet) - A online community for people to learn how to code, shared their code and ask for help.
 
 - [GitGuard](https://github.com/GitGuardApp) - GitGuard is a developers-first solution for scanning GitHub activity in real-time and keeping your code secure.
 
