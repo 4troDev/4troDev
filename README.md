@@ -61,7 +61,7 @@
 <h2>📝 Latest Blog Postog </h2>
 
 <!-- BLOG-POST-LIST:START -->
-
+- [Test Blog](https://dev.to/4tro/test-blog-73j)
 <!-- BLOG-POST-LIST:END -->
 
 ---
