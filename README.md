@@ -24,7 +24,7 @@
 
 <!-- Projects Location: Start -->
 
-- 👨‍💻 All of my projects are available in [My Github Page](https://github.com/4troDev) As well as my [Portfolio: **Coming Soon**](https://4tro.Dev) 
+- 👨‍💻 All of my projects are available in [My Github Profile](https://github.com/4troDev) As well as my [Portfolio: **Coming Soon**](https://4tro.Dev) 
 <!-- Projects Location: end -->
 
 - 💬 **Ask me about:** How my Leaning to code Journey is going ill be happy to tell you and provide you with tips on how to learn yourself.
