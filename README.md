@@ -13,7 +13,8 @@
 
 - [Bull Ctrl](https://github.com/Bullctrl) - A online community for people to learn how to code, shared their code and ask for help.
 
-- [GitGuard](https://github.com/GitGuardApp) - GitGuard is a real-time GitHub activity scanner that prioritizes developers' security. It keeps your code secure and is open-source.
+- [GitGuard](https://github.com/GitGuardApp) - GitGuard is a real-time GitHub activity scanner that prioritizes developers' security. 
+It keeps your code secure and is open-source.
 
 - [RepoMonitor](https://github.com/RepoMonitor) - Powerful and useful tool for developers who want to stay on top of their GitHub repositories and keep their code organized, Secure and up-to-date.
 
