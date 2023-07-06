@@ -62,7 +62,7 @@ It keeps your code secure and is open-source.
 <h2>📝 Latest Blog Postog </h2>
 
 <!-- BLOG-POST-LIST:START -->
-- [Test Blog](https://dev.to/4tro/test-blog-73j)
+- [Issue #1 - The Journey I&#39;m Taking to learn how to Code in 365 Days Starting Today.](https://dev.to/4tro/issue-1-the-journey-im-taking-to-learn-how-to-code-in-365-days-starting-today-37f)
 <!-- BLOG-POST-LIST:END -->
 
 ---
