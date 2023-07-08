@@ -30,7 +30,7 @@ It keeps your code secure and is open-source.
 
 - 💬 **Ask me about:** How my Leaning to code Journey is going ill be happy to tell you and provide you with tips on how to learn yourself.
 ---
-<!-- Github Icons : START-->
+<!-- Github Icons: START-->
 <h2>🌐 Connect with me</h2>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/4tro) 
@@ -57,12 +57,12 @@ It keeps your code secure and is open-source.
 
 
 ---
-<!-- Github Icons : END-->
+<!-- Github Icons: END-->
 
 <h2>📝 Latest Blog Postog </h2>
 
 <!-- BLOG-POST-LIST:START -->
-- [Issue #1 - The Journey I&#39;m Taking to learn how to Code in 365 Days Starting Today.](https://dev.to/4tro/issue-1-the-journey-im-taking-to-learn-how-to-code-in-365-days-starting-today-37f)
+- [Issue #1 - The Journey I&#39;m Taking to Learn how to Code in 365 Days Starting Today.](https://dev.to/4tro/issue-1-the-journey-im-taking-to-learn-how-to-code-in-365-days-starting-today-37f)
 <!-- BLOG-POST-LIST:END -->
 
 ---
