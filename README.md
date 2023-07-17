@@ -2,7 +2,7 @@
 <h2>👨‍🎓 Student. 📚 Learner. 👨‍💻 Coder.</h2>
 
 
-<h4 style="text-align: center;">High school student passionate about tech since a young age, <b>learning how to code</b>, and looking to build the next big thing. <a href="https://coffeedev.me/Subscribe">SignUp for my newsletter</a> to learn more! 👀</h4>
+<h4 style="text-align: center;">High school student passionate about tech since a young age, <b>learning how to code</b>, and looking to build the next big thing. <a href="https://coffeedev.me/Subscribe">Sign Up </a> for The Coffee Dev newsletter  to learn more! 👀</h4>
 
 <img align="right" alt="coding" width="300" src="assets/Courage-Computer-scared.gif">
 
@@ -88,5 +88,6 @@ It keeps your code secure and is open-source.
 
 <!-- Some Notes 
 Personal newsletter link "href="https://4tro.dev/newsletter-signup""
+Sign up for my newsletter</a> to learn more! 👀
 
 -->
