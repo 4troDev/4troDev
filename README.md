@@ -2,7 +2,7 @@
 <h2>👨‍🎓 Student. 📚 Learner. 👨‍💻 Coder.</h2>
 
 
-<h4 style="text-align: center;">High school student passionate about tech since a young age, <b>learning how to code</b>, and looking to build the next big thing. <a href="https://4tro.dev/newsletter-signup">SignUp for my newsletter</a> to learn more! 👀</h4>
+<h4 style="text-align: center;">High school student passionate about tech since a young age, <b>learning how to code</b>, and looking to build the next big thing. <a href="https://coffeedev.me/Subscribe">SignUp for my newsletter</a> to learn more! 👀</h4>
 
 <img align="right" alt="coding" width="300" src="assets/Courage-Computer-scared.gif">
 
@@ -11,15 +11,15 @@
 <h4 align="center">After I'm done learning the basics of coding, I'll be working on learning more advanced coding so I can work on projects like 👇</h4>
 
 
-- [Bull Ctrl](https://github.com/Bullctrl) - A online community for people to learn how to code, shared their code and ask for help.
+- [Bull Ctrl](https://github.com/Bullctrl) - A online community for people to learn how to code, shared their code, and ask for help.
 
 - [GitGuard](https://github.com/GitGuardApp) - GitGuard is a real-time GitHub activity scanner that prioritizes developers' security. 
 It keeps your code secure and is open-source.
 
-- [RepoMonitor](https://github.com/RepoMonitor) - Powerful and useful tool for developers who want to stay on top of their GitHub repositories and keep their code organized, Secure and up-to-date.
+- [RepoMonitor](https://github.com/RepoMonitor) - Powerful and useful tool for developers who want to stay on top of their GitHub repositories and keep their code organized, Secure, and up-to-date.
 
 - [**In....** Secret App](https://4tro.dev/in) - Sign up for my newsletter to be the first to receive updates on **"------"** and gain exclusive insights into its features and benefits."
-<!-- What im Planning to work on: END -->
+<!-- What I'm Planning to work on END -->
 
 - 🌱 I'm currently working on learning **JavaScript, HTML, and CSS**." However, I'm excited to expand my knowledge and skill set by exploring different programming languages. Allowing me to work on more projects in the future.
 
@@ -62,7 +62,7 @@ It keeps your code secure and is open-source.
 <h2>📝 Latest Blog Postog </h2>
 
 <!-- BLOG-POST-LIST:START -->
-- [Issue #1 - The Journey I&#39;m Taking to learn how to Code in 365 Days Starting Today.](https://4tro.hashnode.dev/issue-1-the-journey-im-taking-to-learn-how-to-code-in-365-days-starting-today)
+- [Issue #1 - The Journey I&#39;m Taking to Learn how to Code in 365 Days Starting Today.](https://4tro.hashnode.dev/issue-1-the-journey-im-taking-to-learn-how-to-code-in-365-days-starting-today)
 <!-- BLOG-POST-LIST:END -->
 
 ---
@@ -84,3 +84,9 @@ It keeps your code secure and is open-source.
 
 
 ---
+
+
+<!-- Some Notes 
+Personal newsletter link "href="https://4tro.dev/newsletter-signup""
+
+-->
