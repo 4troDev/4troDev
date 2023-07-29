@@ -18,14 +18,14 @@ It keeps your code secure and is open-source.
 
 - [RepoMonitor](https://github.com/RepoMonitor) - Powerful and useful tool for developers who want to stay on top of their GitHub repositories and keep their code organized, Secure, and up-to-date.
 
-- [**In....** Secret App](https://4tro.dev/in) - Sign up for my newsletter to be the first to receive updates on **"------"** and gain exclusive insights into its features and benefits."
+- [**In....** Secret App](https://4trodev.com/in) - Sign up for my newsletter to be the first to receive updates on **"------"** and gain exclusive insights into its features and benefits."
 <!-- What I'm Planning to work on END -->
 
 - 🌱 I'm currently working on learning **JavaScript, HTML, and CSS**." However, I'm excited to expand my knowledge and skill set by exploring different programming languages. Allowing me to work on more projects in the future.
 
 <!-- Projects Location: Start -->
 
-- 👨‍💻 All of my projects are available in [My Github Profile](https://github.com/4troDev) As well as my [Portfolio: **Coming Soon**](https://4tro.Dev) 
+- 👨‍💻 All of my projects are available in my [**Github**](https://github.com/4troDev) Profile as well as my [**Portfolio**](https://4troDev.com) 
 <!-- Projects Location: end -->
 
 - 💬 **Ask me about:** How my Leaning to code Journey is going ill be happy to tell you and provide you with tips on how to learn yourself.
