@@ -11,10 +11,7 @@
 <h4 align="center">After I'm done learning the basics of coding, I'll be working on learning more advanced coding so I can work on projects like 👇</h4>
 
 
-- [Bull Ctrl](https://github.com/Bullctrl) - A online community for people to learn how to code, shared their code, and ask for help.
-
-- [GitGuard](https://github.com/GitGuardApp) - GitGuard is a real-time GitHub activity scanner that prioritizes developers' security. 
-It keeps your code secure and is open-source.
+- [Bull Ctrl](https://github.com/Bullctrl) - An online community for people to learn how to code, share their code, and ask for help.
 
 - [RepoMonitor](https://github.com/RepoMonitor) - Powerful and useful tool for developers who want to stay on top of their GitHub repositories and keep their code organized, Secure, and up-to-date.
 
@@ -28,7 +25,7 @@ It keeps your code secure and is open-source.
 - 👨‍💻 All of my projects are available in my [**Github**](https://github.com/4troDev) Profile as well as my [**Portfolio**](https://4troDev.com) 
 <!-- Projects Location: end -->
 
-- 💬 **Ask me about:** How my Leaning to code Journey is going ill be happy to tell you and provide you with tips on how to learn yourself.
+- 💬 **Ask me about:** How my learning to code Journey will. be happy to tell you and provide you with tips on how to learn yourself.
 ---
 <!-- Github Icons: START-->
 <h2>🌐 Connect with me</h2>
