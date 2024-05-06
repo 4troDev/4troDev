@@ -10,13 +10,22 @@
 
 <h4 align="center">After I'm done learning the basics of coding, I'll be working on learning more advanced coding so I can work on projects like 👇</h4>
 
-
 - [Bull Ctrl](https://github.com/Bullctrl) - An online community for people to learn how to code, share their code, and ask for help.
 
-- [RepoMonitor](https://github.com/RepoMonitor) - Powerful and useful tool for developers who want to stay on top of their GitHub repositories and keep their code organized, Secure, and up-to-date.
-
 - [**In....** Secret App](https://4trodev.com/in) - Sign up for my newsletter to be the first to receive updates on **"------"** and gain exclusive insights into its features and benefits."
-<!-- What I'm Planning to work on END -->
+<!-- What I'm Planning to work on END --> 
+
+<h2>👨‍💻 Currently working on....</h2>
+<!-- CURRENTLY-WORKING-ON:START -->
+<!-- CURRENTLY-WORKING-ON:END -->
+
+
+
+
+
+<!--
+- [RepoMonitor](https://github.com/RepoMonitor) - Powerful and useful tool for developers who want to stay on top of their GitHub repositories and keep their code organized, Secure, and up-to-date.
+-->
 
 - 🌱 I'm currently working on learning **JavaScript, HTML, and CSS**." However, I'm excited to expand my knowledge and skill set by exploring different programming languages. Allowing me to work on more projects in the future.
 

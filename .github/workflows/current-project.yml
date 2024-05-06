@@ -1,0 +1,46 @@
+name: Update Profile README with the top 5 latest commit | Share Latest Commits
+
+on:
+  push:
+    branches:
+      - main # Adjust this to match the branch you want to trigger the action on
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Update README
+        run: |
+          REPOS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/user/repos?per_page=100" | jq -r '.[] | .full_name')
+
+          ORG_REPOS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/user/orgs" | jq -r '.[] | .login' | xargs -I {} curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/orgs/{}/repos?per_page=100" | jq -r '.[] | .full_name')
+
+          ALL_REPOS=$(echo "$REPOS\n$ORG_REPOS" | sort | uniq)
+
+          COMMITTED_REPOS=""
+          for REPO in $ALL_REPOS; do
+            COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/$REPO/commits?author=<your-github-username>&since=$(date +'%Y-%m-%dT00:00:00Z')" | jq -r '.[].sha') # Update w/ your username
+            if [ -n "$COMMITS" ]; then
+              COMMITTED_REPOS="$COMMITTED_REPOS\n$(basename $REPO)"
+            fi
+          done
+          
+          echo "Updating README with repositories: $COMMITTED_REPOS"
+
+          sed -i '/<!-- CURRENTLY-WORKING-ON:START -->/,/<!-- CURRENTLY-WORKING-ON:END -->/c <!-- CURRENTLY-WORKING-ON:START -->'"$COMMITTED_REPOS"'\n<!-- CURRENTLY-WORKING-ON:END -->' README.md # Adjust file name accordingly
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add profile.md # Adjust file name accordingly
+          git commit -m "Update profile README with current projects"
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
