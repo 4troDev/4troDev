@@ -23,7 +23,7 @@ jobs:
 
           COMMITTED_REPOS=""
           for REPO in $ALL_REPOS; do
-            COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/$REPO/commits?author=<your-github-username>&since=$(date +'%Y-%m-%dT00:00:00Z')" | jq -r '.[].sha') # Update w/ your username
+            COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/$REPO/commits?author=4trodev&since=$(date +'%Y-%m-%dT00:00:00Z')" | jq -r '.[].sha') # Update w/ your username
             if [ -n "$COMMITS" ]; then
               COMMITTED_REPOS="$COMMITTED_REPOS\n$(basename $REPO)"
             fi
