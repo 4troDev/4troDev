@@ -6,7 +6,7 @@
 
 <img align="right" alt="coding" width="300" src="assets/Courage-Computer-scared.gif">
 
-[![](https://visitcount.itsvg.in/api?id=4troDev&icon=1&color=1)](https://visitcount.itsvg.in)
+[![](https://visitcount.itsvg.in/api?id=4trodev&label=Profile%20Views&color=1&icon=0&pretty=true)](https://visitcount.itsvg.in)
 
 <h4 align="center">After I'm done learning the basics of coding, I'll be working on learning more advanced coding so I can work on projects like 👇</h4>
 
