@@ -1,0 +1,67 @@
+name: 🔄 Update Committed Repos in README
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Fetch Recent Commit Activity
+        run: |
+          set -e
+
+          # Get user repos
+          REPOS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user/repos?per_page=100)
+          echo "$REPOS_JSON" | jq empty || { echo "❌ Invalid user repos JSON"; exit 1; }
+
+          REPOS=$(echo "$REPOS_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')
+
+          # Get org repos
+          ORG_REPOS=""
+          ORGS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user/orgs | jq -r '.[].login')
+          for ORG in $ORGS; do
+            ORG_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/$ORG/repos?per_page=100)
+            echo "$ORG_JSON" | jq empty || { echo "⚠️ Invalid repos for org $ORG"; continue; }
+            ORG_REPOS+=$(echo "$ORG_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')$'\n'
+          done
+
+          # Merge and deduplicate
+          ALL_REPOS=$(echo -e "$REPOS\n$ORG_REPOS" | sort | uniq)
+
+          # Get today's commits
+          COMMITTED_REPOS=""
+          for REPO in $ALL_REPOS; do
+            COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/$REPO/commits?author=4troDev&since=$(date -u +%Y-%m-%dT00:00:00Z)" \
+              | jq -r 'if type=="array" then .[].sha else empty end')
+
+            if [ -n "$COMMITS" ]; then
+              COMMITTED_REPOS+="- [$(basename $REPO)](https://github.com/$REPO)"$'\n'
+            fi
+          done
+
+          # If none found, use fallback message
+          if [ -z "$COMMITTED_REPOS" ]; then
+            COMMITTED_REPOS="*No activity today.*"
+          fi
+
+          # Update README.md
+          awk -v r="$COMMITTED_REPOS" '
+            /<!-- CURRENTLY-WORKING-ON:START -->/ { print; print r; skip=1; next }
+            /<!-- CURRENTLY-WORKING-ON:END -->/ { skip=0 }
+            skip==0 { print }
+          ' README.md > README.tmp && mv README.tmp README.md
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          message: "🔄 Update committed repos in README"
