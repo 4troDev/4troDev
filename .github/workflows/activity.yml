@@ -12,8 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Update README with recent GitHub activity
-        uses: Readme-Workflows/recent-activity@v2.5.0
+      - name: Recent GitHub Activity - Profile Readme
+        uses: Readme-Workflows/recent-activity@v2.4.1
         with:
           GH_USERNAME: 4troDev
           COMMIT_MSG: '⚡️ Update recent GitHub activity'
