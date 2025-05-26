@@ -1,0 +1,21 @@
+name: GitHub Activity Update
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Update recent GitHub activity in README
+        uses: Readme-Workflows/recent-activity@v2.5.0
+        with:
+          GH_USERNAME: 4troDev
+          COMMIT_MSG: "⚡ Update recent activity"
+          MAX_LINES: 5
