@@ -14,8 +14,9 @@
 ---
 
 ### 🔄 Recent GitHub Activity
-<!-- CURRENTLY-WORKING-ON:START -->
-<!-- CURRENTLY-WORKING-ON:END -->
+
+<!--START_SECTION:activity-->
+<!--END_SECTION:activity-->
 
 ---
 
