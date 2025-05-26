@@ -1,20 +1,39 @@
-name: ⚡️ Update Recent GitHub Activity
+- name: Update README
+  run: |
+    set -e
 
-on:
-  schedule:
-    - cron: '0 * * * *'  # Runs every hour
-  workflow_dispatch:
+    echo "🔄 Fetching user repos..."
+    REPOS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+      "https://api.github.com/user/repos?per_page=100" | \
+      jq -r 'if type=="array" then .[] | .full_name else empty end')
 
-jobs:
-  update-activity:
-    runs-on: ubuntu-latest
+    echo "🔄 Fetching organization repos..."
+    ORGS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+      https://api.github.com/user/orgs | jq -r '.[].login')
 
-    steps:
-      - uses: actions/checkout@v3
+    ORG_REPOS=""
+    for ORG in $ORGS; do
+      ORG_REPOS+=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+        https://api.github.com/orgs/$ORG/repos?per_page=100 | \
+        jq -r 'if type=="array" then .[] | .full_name else empty end')$'\n'
+    done
 
-      - name: Update README with recent GitHub activity
-        uses: Readme-Workflows/recent-activity@v2.5.0
-        with:
-          GH_USERNAME: 4troDev
-          COMMIT_MSG: '⚡️ Update recent GitHub activity'
-          MAX_LINES: 5
+    ALL_REPOS=$(echo -e "$REPOS\n$ORG_REPOS" | sort | uniq)
+
+    echo "📝 Searching commits for author 4troDev..."
+    COMMITTED_REPOS=""
+    for REPO in $ALL_REPOS; do
+      COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+        "https://api.github.com/repos/$REPO/commits?author=4troDev&since=$(date +'%Y-%m-%dT00:00:00Z')" | \
+        jq -r 'if type=="array" then .[].sha else empty end')
+      if [ -n "$COMMITS" ]; then
+        COMMITTED_REPOS+="- $(basename $REPO)"$'\n'
+      fi
+    done
+
+    echo "📌 Updating README..."
+    awk -v r="$COMMITTED_REPOS" '
+      /<!-- CURRENTLY-WORKING-ON:START -->/ { print; print r; skip=1; next }
+      /<!-- CURRENTLY-WORKING-ON:END -->/ { skip=0 }
+      skip==0 { print }
+    ' README.md > README.tmp && mv README.tmp README.md
