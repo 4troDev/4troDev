@@ -1,8 +1,8 @@
-name: 🛠 Recent GitHub Activity
+name: ⚡️ Update Recent GitHub Activity
 
 on:
   schedule:
-    - cron: '0 * * * *'  # every hour
+    - cron: '0 * * * *'  # Runs every hour
   workflow_dispatch:
 
 jobs:
@@ -12,9 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Recent Activity Readme
+      - name: Update README with recent GitHub activity
         uses: Readme-Workflows/recent-activity@v2.5.0
         with:
           GH_USERNAME: 4troDev
-          MAX_LINES: 5
           COMMIT_MSG: '⚡️ Update recent GitHub activity'
+          MAX_LINES: 5
