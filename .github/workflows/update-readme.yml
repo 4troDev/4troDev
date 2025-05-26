@@ -18,53 +18,56 @@ jobs:
           set -e
 
           echo "🧪 Checking GitHub API rate limit..."
-          RATE_LIMIT=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/rate_limit | jq '.rate.remaining')
-
+          RATE_LIMIT=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit | jq '.rate.remaining')
           if [ "$RATE_LIMIT" -eq 0 ]; then
             echo "❌ GitHub API rate limit exceeded. Exiting."
             exit 1
           fi
 
-          echo "🔄 Fetching user repos..."
-          REPOS_RAW=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/user/repos?per_page=100)
-
-          if ! echo "$REPOS_RAW" | jq -e 'type == "array"' > /dev/null; then
-            echo "❌ Invalid user repos response:"
-            echo "$REPOS_RAW"
+          echo "📥 Fetching user repositories..."
+          REPOS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user/repos?per_page=100)
+          if ! echo "$REPOS_JSON" | jq -e 'type == "array"' > /dev/null; then
+            echo "❌ User repos response is not valid JSON array:"
+            echo "$REPOS_JSON"
             exit 1
           fi
+          REPOS=$(echo "$REPOS_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')
 
-          REPOS=$(echo "$REPOS_RAW" | jq -r '.[] | select(.full_name != null) | .full_name')
-
-          echo "🔄 Fetching organization repos..."
+          echo "📥 Fetching organization repositories..."
           ORG_REPOS=""
-          ORGS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/user/orgs | jq -r '.[].login')
+          ORGS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user/orgs)
+          if ! echo "$ORGS_JSON" | jq -e 'type == "array"' > /dev/null; then
+            echo "❌ Org list response is invalid:"
+            echo "$ORGS_JSON"
+            exit 1
+          fi
+          ORG_NAMES=$(echo "$ORGS_JSON" | jq -r '.[].login')
 
-          for ORG in $ORGS; do
-            ORG_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              https://api.github.com/orgs/$ORG/repos?per_page=100)
-
-            if echo "$ORG_JSON" | jq -e 'type == "array"' > /dev/null; then
-              ORG_REPOS+=$(echo "$ORG_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')$'\n'
+          for ORG in $ORG_NAMES; do
+            ORG_REPO_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/$ORG/repos?per_page=100)
+            if echo "$ORG_REPO_JSON" | jq -e 'type == "array"' > /dev/null; then
+              ORG_REPOS+=$(echo "$ORG_REPO_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')$'\n'
             else
-              echo "⚠️ Skipping $ORG due to invalid response"
+              echo "⚠️ Skipping org '$ORG' due to invalid repo response"
             fi
           done
 
+          echo "🔀 Merging all repositories..."
           ALL_REPOS=$(echo -e "$REPOS\n$ORG_REPOS" | sort | uniq)
 
-          echo "🔍 Looking for recent commits..."
+          echo "🔎 Looking for commits made today..."
           COMMITTED_REPOS=""
           for REPO in $ALL_REPOS; do
-            COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              "https://api.github.com/repos/$REPO/commits?author=4troDev&since=$(date -u +%Y-%m-%dT00:00:00Z)" | \
-              jq -r 'if type=="array" then .[].sha else empty end')
+            COMMITS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/$REPO/commits?author=4troDev&since=$(date -u +%Y-%m-%dT00:00:00Z)")
 
-            if [ -n "$COMMITS" ]; then
-              COMMITTED_REPOS+="- [$(basename $REPO)](https://github.com/$REPO)"$'\n'
+            if echo "$COMMITS_JSON" | jq -e 'type == "array"' > /dev/null; then
+              HAS_COMMITS=$(echo "$COMMITS_JSON" | jq -r '.[].sha' | head -n 1)
+              if [ -n "$HAS_COMMITS" ]; then
+                COMMITTED_REPOS+="- [$(basename $REPO)](https://github.com/$REPO)"$'\n'
+              fi
+            else
+              echo "⚠️ Skipping $REPO — invalid commits response"
             fi
           done
 
