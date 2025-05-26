@@ -1,39 +1,76 @@
-- name: Update README
-  run: |
-    set -e
+name: 🛠 Update Recent Commit Activity in README
 
-    echo "🔄 Fetching user repos..."
-    REPOS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-      "https://api.github.com/user/repos?per_page=100" | \
-      jq -r 'if type=="array" then .[] | .full_name else empty end')
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch:
 
-    echo "🔄 Fetching organization repos..."
-    ORGS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-      https://api.github.com/user/orgs | jq -r '.[].login')
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
 
-    ORG_REPOS=""
-    for ORG in $ORGS; do
-      ORG_REPOS+=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-        https://api.github.com/orgs/$ORG/repos?per_page=100 | \
-        jq -r 'if type=="array" then .[] | .full_name else empty end')$'\n'
-    done
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    ALL_REPOS=$(echo -e "$REPOS\n$ORG_REPOS" | sort | uniq)
+      - name: Fetch and Update Commit Activity
+        run: |
+          set -e
 
-    echo "📝 Searching commits for author 4troDev..."
-    COMMITTED_REPOS=""
-    for REPO in $ALL_REPOS; do
-      COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-        "https://api.github.com/repos/$REPO/commits?author=4troDev&since=$(date +'%Y-%m-%dT00:00:00Z')" | \
-        jq -r 'if type=="array" then .[].sha else empty end')
-      if [ -n "$COMMITS" ]; then
-        COMMITTED_REPOS+="- $(basename $REPO)"$'\n'
-      fi
-    done
+          echo "🔄 Fetching user repos..."
+          REPOS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/user/repos?per_page=100")
 
-    echo "📌 Updating README..."
-    awk -v r="$COMMITTED_REPOS" '
-      /<!-- CURRENTLY-WORKING-ON:START -->/ { print; print r; skip=1; next }
-      /<!-- CURRENTLY-WORKING-ON:END -->/ { skip=0 }
-      skip==0 { print }
-    ' README.md > README.tmp && mv README.tmp README.md
+          if echo "$REPOS_JSON" | jq -e 'type == "array"' > /dev/null; then
+            REPOS=$(echo "$REPOS_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')
+          else
+            echo "❌ Failed to get user repos"
+            echo "$REPOS_JSON"
+            exit 1
+          fi
+
+          echo "🔄 Fetching organization repos..."
+          ORG_LOGINS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/user/orgs" | jq -r '.[].login')
+
+          ORG_REPOS=""
+          for ORG in $ORG_LOGINS; do
+            ORG_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/orgs/$ORG/repos?per_page=100")
+
+            if echo "$ORG_JSON" | jq -e 'type == "array"' > /dev/null; then
+              ORG_REPOS+=$(echo "$ORG_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')$'\n'
+            else
+              echo "⚠️ Skipping $ORG, bad JSON"
+            fi
+          done
+
+          ALL_REPOS=$(echo -e "$REPOS\n$ORG_REPOS" | sort | uniq)
+          COMMITTED_REPOS=""
+
+          echo "🔍 Checking for today's commits..."
+          for REPO in $ALL_REPOS; do
+            COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/$REPO/commits?author=4troDev&since=$(date -u +%Y-%m-%dT00:00:00Z)" \
+              | jq -r 'if type=="array" then .[].sha else empty end')
+
+            if [ -n "$COMMITS" ]; then
+              COMMITTED_REPOS+="- [$(basename "$REPO")](https://github.com/$REPO)"$'\n'
+            fi
+          done
+
+          echo "📝 Updating README..."
+          awk -v r="$COMMITTED_REPOS" '
+            /<!-- CURRENTLY-WORKING-ON:START -->/ {
+              print; print r; skip=1; next
+            }
+            /<!-- CURRENTLY-WORKING-ON:END -->/ { skip=0 }
+            skip==0 { print }
+          ' README.md > README.tmp && mv README.tmp README.md
+
+      - name: Commit and Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          message: "🔄 update recent project activity"
