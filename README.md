@@ -14,10 +14,9 @@
 ---
 
 ### 🔄 Recent GitHub Activity
-
-
 <!-- CURRENTLY-WORKING-ON:START -->
 <!-- CURRENTLY-WORKING-ON:END -->
+
 ---
 
 ### 🚀 Projects I'm Building
