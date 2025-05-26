@@ -18,14 +18,14 @@ jobs:
           set -e
 
           echo "🧪 Checking GitHub API rate limit..."
-          RATE_LIMIT=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit | jq '.rate.remaining')
+          RATE_LIMIT=$(curl -s -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" https://api.github.com/rate_limit | jq '.rate.remaining')
           if [ "$RATE_LIMIT" -eq 0 ]; then
             echo "❌ GitHub API rate limit exceeded. Exiting."
             exit 1
           fi
 
           echo "📥 Fetching user repositories..."
-          REPOS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user/repos?per_page=100)
+          REPOS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" https://api.github.com/user/repos?per_page=100)
           if ! echo "$REPOS_JSON" | jq -e 'type == "array"' > /dev/null; then
             echo "❌ User repos response is not valid JSON array:"
             echo "$REPOS_JSON"
@@ -35,7 +35,7 @@ jobs:
 
           echo "📥 Fetching organization repositories..."
           ORG_REPOS=""
-          ORGS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user/orgs)
+          ORGS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" https://api.github.com/user/orgs)
           if ! echo "$ORGS_JSON" | jq -e 'type == "array"' > /dev/null; then
             echo "❌ Org list response is invalid:"
             echo "$ORGS_JSON"
@@ -44,7 +44,7 @@ jobs:
           ORG_NAMES=$(echo "$ORGS_JSON" | jq -r '.[].login')
 
           for ORG in $ORG_NAMES; do
-            ORG_REPO_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/$ORG/repos?per_page=100)
+            ORG_REPO_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" https://api.github.com/orgs/$ORG/repos?per_page=100)
             if echo "$ORG_REPO_JSON" | jq -e 'type == "array"' > /dev/null; then
               ORG_REPOS+=$(echo "$ORG_REPO_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')$'\n'
             else
@@ -58,7 +58,7 @@ jobs:
           echo "🔎 Looking for commits made today..."
           COMMITTED_REPOS=""
           for REPO in $ALL_REPOS; do
-            COMMITS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            COMMITS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" \
               "https://api.github.com/repos/$REPO/commits?author=4troDev&since=$(date -u +%Y-%m-%dT00:00:00Z)")
 
             if echo "$COMMITS_JSON" | jq -e 'type == "array"' > /dev/null; then
