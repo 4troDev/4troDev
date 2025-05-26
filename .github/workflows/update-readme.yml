@@ -2,14 +2,11 @@ name: 🔄 Update Committed Repos in README
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Every hour
+    - cron: '0 * * * *'  # Runs every hour
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-env:
-  AUTH_HEADER: "Authorization: Bearer ${{ secrets.PAT_TOKEN }}"
+  contents: read
 
 jobs:
   update-readme:
@@ -22,10 +19,13 @@ jobs:
       - name: Fetch Recent Commit Activity
         run: |
           set -e
+          AUTH_HEADER="Authorization: Bearer ${{ secrets.PAT_TOKEN }}"
+
           echo "🧪 Checking GitHub API rate limit..."
           RATE_LIMIT=$(curl -s -H "$AUTH_HEADER" https://api.github.com/rate_limit | jq '.rate.remaining')
-          if [ "$RATE_LIMIT" -eq 0 ]; then
-            echo "❌ GitHub API rate limit exceeded. Exiting."
+
+          if [ "$RATE_LIMIT" = "null" ] || [ -z "$RATE_LIMIT" ] || [ "$RATE_LIMIT" -eq 0 ]; then
+            echo "❌ GitHub API rate limit exceeded or invalid token."
             exit 1
           fi
 
@@ -47,6 +47,7 @@ jobs:
             exit 1
           fi
           ORG_NAMES=$(echo "$ORGS_JSON" | jq -r '.[].login')
+
           for ORG in $ORG_NAMES; do
             ORG_REPO_JSON=$(curl -s -H "$AUTH_HEADER" https://api.github.com/orgs/$ORG/repos?per_page=100)
             if echo "$ORG_REPO_JSON" | jq -e 'type == "array"' > /dev/null; then
