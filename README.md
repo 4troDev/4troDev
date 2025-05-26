@@ -13,10 +13,11 @@
 
 ---
 
-### 🔄 Recent GitHub Activity
+### 🛠 Currently Working On
 
-<!--START_SECTION:activity-->
-<!--END_SECTION:activity-->
+<!-- CURRENTLY-WORKING-ON:START -->
+<!-- CURRENTLY-WORKING-ON:END -->
+
 
 ---
 
