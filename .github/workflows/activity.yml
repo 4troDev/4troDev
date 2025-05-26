@@ -1,64 +1,20 @@
-name: Update Profile README with the top 5 latest commit | Share Latest Commits
+name: 🛠 Recent GitHub Activity
+
 on:
-  push:
-    branches:
-      - main # Adjust this to match the branch you want to trigger the action on
+  schedule:
+    - cron: '0 * * * *' # every hour
+  workflow_dispatch:
 
 jobs:
-  update-readme:
+  update-activity:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Update README
-        run: |
-          REPOS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/user/repos?per_page=100" | jq -r '.[] | .full_name' || echo "")
-          
-          ORG_LOGINS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/user/orgs" | jq -r '.[] | .login' || echo "")
-          ORG_REPOS=""
-          if [ -n "$ORG_LOGINS" ]; then
-            ORG_REPOS=$(echo "$ORG_LOGINS" | xargs -I {} curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/orgs/{}/repos?per_page=100" | jq -r '.[] | .full_name' || echo "")
-          fi
-
-          ALL_REPOS=$(echo -e "$REPOS\n$ORG_REPOS" | sort | uniq | grep -v '^\s*$' || echo "") # Use -e for newline interpretation and filter empty lines
-
-          COMMITTED_REPOS=""
-          if [ -n "$ALL_REPOS" ]; then
-            for REPO in $ALL_REPOS; do
-              # Ensure REPO is not empty before curling
-              if [ -n "$REPO" ]; then
-                COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/$REPO/commits?author=4trodev&since=$(date +'%Y-%m-%dT00:00:00Z')" | jq -r '.[].sha' || echo "") # Update w/ your username
-                if [ -n "$COMMITS" ]; then
-                  COMMITTED_REPOS="$COMMITTED_REPOS\n$(basename $REPO)"
-                fi
-              fi
-            done
-          fi
-          
-          # Remove leading newline if COMMITTED_REPOS is not empty
-          COMMITTED_REPOS=$(echo -e "$COMMITTED_REPOS" | sed 's/^[[:space:]]*//' || echo "")
-
-          echo "Updating README with repositories: $COMMITTED_REPOS"
-          
-          # Use a temporary file for sed to avoid issues with direct modification on some systems
-          # and ensure a default if COMMITTED_REPOS is empty
-          if [ -z "$COMMITTED_REPOS" ]; then
-            REPLACE_CONTENT="\nNo recent commits.\n"
-          else
-            REPLACE_CONTENT="\n$COMMITTED_REPOS\n"
-          fi
-          
-          sed -i '//,//c\'"$REPLACE_CONTENT" README.md # Adjust file name accordingly
-
-      - name: Commit changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add README.md # Adjust file name accordingly to README.md
-          git commit -m "Update profile README with current projects" || echo "No changes to commit" # Allow no changes to avoid failure
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - name: Update README with recent GitHub activity
+        uses: Readme-Workflows/recent-activity@v2.5.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          GH_USERNAME: 4troDev
+          COMMIT_MSG: '⚡️ Update recent GitHub activity'
+          MAX_LINES: 5
