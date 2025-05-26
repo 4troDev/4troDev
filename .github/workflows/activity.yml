@@ -1,20 +1,110 @@
-name: 🛠 Recent GitHub Activity
+name: Update Profile README with the top 5 latest commit | Share Latest Commits
 
 on:
-  schedule:
-    - cron: '0 * * * *' # every hour
-  workflow_dispatch:
+  push:
+    branches:
+      - main # Adjust this to match the branch you want to trigger the action on
 
 jobs:
-  update-activity:
+  update-readme:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3 # Using v3 for best practices
 
-      - name: Recent GitHub Activity - Profile Readme
-        uses: Readme-Workflows/recent-activity@v2.4.1
+      - name: Update README
+        run: |
+          # Fetch user repositories, handling potential errors and ensuring valid JSON.
+          # Redirect stderr to /dev/null for curl and jq, provide empty string on failure.
+          REPOS_RAW=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/user/repos?per_page=100" 2>/dev/null)
+          if [ -z "$REPOS_RAW" ] || ! echo "$REPOS_RAW" | jq -e '.[0] // empty' >/dev/null 2>&1; then
+            echo "Warning: Could not fetch user repositories or received invalid JSON. Skipping user repos."
+            REPOS=""
+          else
+            REPOS=$(echo "$REPOS_RAW" | jq -r '.[] | select(.full_name != null) | .full_name')
+          fi
+
+          # Fetch organization logins, handling potential errors.
+          ORG_LOGINS_RAW=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/user/orgs" 2>/dev/null)
+          ORG_LOGINS=""
+          if [ -z "$ORG_LOGINS_RAW" ] || ! echo "$ORG_LOGINS_RAW" | jq -e '.[0] // empty' >/dev/null 2>&1; then
+            echo "Warning: Could not fetch organization logins or received invalid JSON. Skipping organizations."
+          else
+            ORG_LOGINS=$(echo "$ORG_LOGINS_RAW" | jq -r '.[] | .login')
+          fi
+
+          ORG_REPOS=""
+          # Only fetch organization repos if there are any organization logins found
+          if [ -n "$ORG_LOGINS" ]; then
+            # Loop through each organization login to fetch repositories
+            echo "$ORG_LOGINS" | while read -r ORG_LOGIN; do
+              ORG_REPOS_RAW=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/orgs/$ORG_LOGIN/repos?per_page=100" 2>/dev/null)
+              if [ -z "$ORG_REPOS_RAW" ] || ! echo "$ORG_REPOS_RAW" | jq -e '.[0] // empty' >/dev/null 2>&1; then
+                echo "Warning: Could not fetch repositories for organization '$ORG_LOGIN' or received invalid JSON. Skipping."
+              else
+                ORG_REPOS_TEMP=$(echo "$ORG_REPOS_RAW" | jq -r '.[] | select(.full_name != null) | .full_name')
+                ORG_REPOS="${ORG_REPOS}\n${ORG_REPOS_TEMP}"
+              fi
+            done
+          fi
+
+          # Combine all repositories, sort, get unique entries, and filter out any blank lines
+          ALL_REPOS=$(echo -e "$REPOS\n$ORG_REPOS" | sort | uniq | grep -v '^\s*$' || echo "")
+
+          COMMITTED_REPOS=""
+          if [ -n "$ALL_REPOS" ]; then
+            for REPO in $ALL_REPOS; do
+              # Ensure REPO is not empty before making the commit API call
+              if [ -n "$REPO" ]; then
+                # Fetch commits by author, handling potential errors. Update '4trodev' with your GitHub username.
+                COMMITS_RAW=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/$REPO/commits?author=4trodev&since=$(date +'%Y-%m-%dT00:00:00Z')" 2>/dev/null)
+                if [ -n "$COMMITS_RAW" ] && echo "$COMMITS_RAW" | jq -e '.[0] // empty' >/dev/null 2>&1; then
+                  COMMITS=$(echo "$COMMITS_RAW" | jq -r '.[].sha') # Only parse if valid JSON
+                  if [ -n "$COMMITS" ]; then
+                    COMMITTED_REPOS="${COMMITTED_REPOS}\n$(basename "$REPO")"
+                  fi
+                else
+                  echo "Warning: Could not fetch commits for repository '$REPO' or received invalid JSON. Skipping."
+                fi
+              fi
+            done
+          fi
+
+          # Prepare the final string for the README, providing a default message if no activity is found
+          FINAL_REPOS=""
+          if [ -z "$COMMITTED_REPOS" ]; then
+            FINAL_REPOS="No recent committed activity found."
+          else
+            # Remove any leading newlines from the collected repository names
+            FINAL_REPOS=$(echo -e "$COMMITTED_REPOS" | sed 's/^\n*//')
+          fi
+
+          echo "Updating README with repositories: $FINAL_REPOS"
+
+          # Prepare the content block to be inserted into the README.md file
+          # Ensure the `sed` command correctly handles multi-line insertion
+          REPLACE_CONTENT="\n$FINAL_REPOS\n"
+
+          # Update README.md using sed. Adjust 'README.md' if your file has a different name.
+          sed -i "//,//c\\$REPLACE_CONTENT" README.md
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          # Only add and commit if there are actual changes to the README.md file
+          if ! git diff --quiet README.md; then
+            git add README.md # Ensure you're adding the correct file name (e.g., 'README.md' or 'profile.md')
+            git commit -m "Update profile README with current projects"
+          else
+            echo "No changes detected in README.md to commit."
+          fi
+        # Set continue-on-error to true so the workflow doesn't fail if no changes are found
+        continue-on-error: true 
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          GH_USERNAME: 4troDev
-          COMMIT_MSG: '⚡️ Update recent GitHub activity'
-          MAX_LINES: 5
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main # Explicitly specify the branch to push to
