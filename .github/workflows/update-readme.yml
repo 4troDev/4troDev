@@ -17,42 +17,62 @@ jobs:
         run: |
           set -e
 
-          # Get user repos
-          REPOS_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user/repos?per_page=100)
-          echo "$REPOS_JSON" | jq empty || { echo "❌ Invalid user repos JSON"; exit 1; }
+          echo "🧪 Checking GitHub API rate limit..."
+          RATE_LIMIT=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/rate_limit | jq '.rate.remaining')
 
-          REPOS=$(echo "$REPOS_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')
+          if [ "$RATE_LIMIT" -eq 0 ]; then
+            echo "❌ GitHub API rate limit exceeded. Exiting."
+            exit 1
+          fi
 
-          # Get org repos
+          echo "🔄 Fetching user repos..."
+          REPOS_RAW=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/user/repos?per_page=100)
+
+          if ! echo "$REPOS_RAW" | jq -e 'type == "array"' > /dev/null; then
+            echo "❌ Invalid user repos response:"
+            echo "$REPOS_RAW"
+            exit 1
+          fi
+
+          REPOS=$(echo "$REPOS_RAW" | jq -r '.[] | select(.full_name != null) | .full_name')
+
+          echo "🔄 Fetching organization repos..."
           ORG_REPOS=""
-          ORGS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user/orgs | jq -r '.[].login')
+          ORGS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/user/orgs | jq -r '.[].login')
+
           for ORG in $ORGS; do
-            ORG_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/$ORG/repos?per_page=100)
-            echo "$ORG_JSON" | jq empty || { echo "⚠️ Invalid repos for org $ORG"; continue; }
-            ORG_REPOS+=$(echo "$ORG_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')$'\n'
+            ORG_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              https://api.github.com/orgs/$ORG/repos?per_page=100)
+
+            if echo "$ORG_JSON" | jq -e 'type == "array"' > /dev/null; then
+              ORG_REPOS+=$(echo "$ORG_JSON" | jq -r '.[] | select(.full_name != null) | .full_name')$'\n'
+            else
+              echo "⚠️ Skipping $ORG due to invalid response"
+            fi
           done
 
-          # Merge and deduplicate
           ALL_REPOS=$(echo -e "$REPOS\n$ORG_REPOS" | sort | uniq)
 
-          # Get today's commits
+          echo "🔍 Looking for recent commits..."
           COMMITTED_REPOS=""
           for REPO in $ALL_REPOS; do
             COMMITS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              "https://api.github.com/repos/$REPO/commits?author=4troDev&since=$(date -u +%Y-%m-%dT00:00:00Z)" \
-              | jq -r 'if type=="array" then .[].sha else empty end')
+              "https://api.github.com/repos/$REPO/commits?author=4troDev&since=$(date -u +%Y-%m-%dT00:00:00Z)" | \
+              jq -r 'if type=="array" then .[].sha else empty end')
 
             if [ -n "$COMMITS" ]; then
               COMMITTED_REPOS+="- [$(basename $REPO)](https://github.com/$REPO)"$'\n'
             fi
           done
 
-          # If none found, use fallback message
           if [ -z "$COMMITTED_REPOS" ]; then
             COMMITTED_REPOS="*No activity today.*"
           fi
 
-          # Update README.md
+          echo "📝 Updating README.md..."
           awk -v r="$COMMITTED_REPOS" '
             /<!-- CURRENTLY-WORKING-ON:START -->/ { print; print r; skip=1; next }
             /<!-- CURRENTLY-WORKING-ON:END -->/ { skip=0 }
